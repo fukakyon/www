@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memon — CONVENISOFT</title>
+  <style>
+    :root {
+      --bg: #FAF6F0;
+      --bg-card: #F2EBE0;
+      --text: #1C1816;
+      --text-muted: #6B5C4E;
+      --accent: #7A5C1E;
+      --divider: #E2D5BC;
+      --link: #7A5C1E;
+      --badge-bg: #EDE4D3;
+      --shadow: rgba(28,24,22,0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1A1714;
+        --bg-card: #241F1B;
+        --text: #E8E0D4;
+        --text-muted: #9E8E7E;
+        --accent: #C4962A;
+        --divider: #3A3028;
+        --link: #C4962A;
+        --badge-bg: #2E2720;
+        --shadow: rgba(0,0,0,0.3);
+      }
+    }
+    :root[data-theme="light"] {
+      --bg: #FAF6F0; --bg-card: #F2EBE0; --text: #1C1816; --text-muted: #6B5C4E;
+      --accent: #7A5C1E; --divider: #E2D5BC; --link: #7A5C1E; --badge-bg: #EDE4D3; --shadow: rgba(28,24,22,0.08);
+    }
+    :root[data-theme="dark"] {
+      --bg: #1A1714; --bg-card: #241F1B; --text: #E8E0D4; --text-muted: #9E8E7E;
+      --accent: #C4962A; --divider: #3A3028; --link: #C4962A; --badge-bg: #2E2720; --shadow: rgba(0,0,0,0.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", -apple-system, system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* ── Navigation ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--divider);
+      z-index: 100;
+    }
+    .site-nav .inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+    .nav-brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      font-weight: normal;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links { list-style: none; display: flex; }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0 14px;
+      height: 52px;
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav-links > li > a:hover { color: var(--accent); }
+    .nav-arrow {
+      font-size: 10px;
+      opacity: 0.6;
+      transition: transform 0.2s;
+    }
+    .nav-links > li.open > a .nav-arrow,
+    .nav-links > li:hover > a .nav-arrow { transform: rotate(180deg); }
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      right: 0;
+      min-width: 140px;
+      background: var(--bg-card);
+      border: 1px solid var(--divider);
+      border-radius: 6px;
+      box-shadow: 0 4px 16px var(--shadow);
+      list-style: none;
+      padding: 6px 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .nav-links > li:hover .dropdown,
+    .nav-links > li:focus-within .dropdown,
+    .nav-links > li.open .dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .dropdown a { display: block; padding: 9px 16px; font-size: 14px; color: var(--text); text-decoration: none; }
+    .dropdown a:hover { background: var(--bg); color: var(--accent); }
+
+    /* ── Main content ── */
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 20px 80px; }
+
+    header.page-header {
+      margin-bottom: 52px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .app-label {
+      display: inline-block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 12px;
+      font-weight: normal;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: "Hiragino Mincho ProN", "Noto Serif JP", Georgia, serif;
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .platform-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--badge-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--divider);
+    }
+
+    /* ── Feature sections ── */
+    .feature-section { margin-bottom: 40px; }
+
+    h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 14px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .section-icon {
+      font-family: Georgia, serif;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      opacity: 0.6;
+    }
+
+    ul.feature-list {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    ul.feature-list li {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.7;
+      padding: 7px 0 7px 18px;
+      border-bottom: 1px solid var(--divider);
+      position: relative;
+    }
+    ul.feature-list li:last-child { border-bottom: none; }
+    ul.feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+    ul.feature-list li .note {
+      display: inline;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── Links section ── */
+    .links-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--divider); }
+    .links-section p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+    .doc-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .doc-link {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .doc-link:hover { opacity: 0.75; }
+
+    a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { opacity: 0.75; }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--divider);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) { .container { padding: 40px 16px 64px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="サイトナビゲーション">
+    <div class="inner">
+      <a class="nav-brand" href="../index.html">CONVENISOFT</a>
+      <ul class="nav-links">
+        <li>
+          <a href="#" aria-haspopup="true">アプリケーション <span class="nav-arrow">▾</span></a>
+          <ul class="dropdown" role="menu">
+            <li><a href="memon.html" role="menuitem">Memon</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header class="page-header">
+      <span class="app-label">CONVENISOFT</span>
+      <h1>Memon</h1>
+      <div class="platform-badges">
+        <span class="badge">macOS</span>
+        <span class="badge">iOS</span>
+        <span class="badge">Android</span>
+        <span class="badge">Windows</span>
+      </div>
+    </header>
+
+    <!-- メモ管理 -->
+    <section class="feature-section">
+      <h2><span class="section-icon">01</span>メモ管理</h2>
+      <ul class="feature-list">
+        <li>グループ／メモの階層ツリー管理</li>
+        <li>重要度設定（★★★ / ★★ / ★ / なし）による色分け表示</li>
+        <li>タグ付けと一覧表示</li>
+        <li>グループとメモのアイコン変更 <span class="note">（標準18カテゴリ・12色、カスタム設定）</span></li>
+        <li>メモのソート <span class="note">（更新日時・作成日時・タイトル・重要度・タグ）</span></li>
+        <li>メモの別グループへの移動 <span class="note">（デスクトップ：ドラッグ＆ドロップ、モバイル：長押しで選択モードに入りチェックボックスで複数選択→移動）</span></li>
+      </ul>
+    </section>
+
+    <!-- リッチテキスト編集 -->
+    <section class="feature-section">
+      <h2><span class="section-icon">02</span>リッチテキスト編集</h2>
+      <ul class="feature-list">
+        <li>太字・イタリック・下線・取り消し線</li>
+        <li>文字色・背景色</li>
+        <li>見出し（H1〜H3）</li>
+        <li>箇条書き・番号付きリスト</li>
+        <li>メモ個別の背景色設定</li>
+      </ul>
+    </section>
+
+    <!-- 検索 -->
+    <section class="feature-section">
+      <h2><span class="section-icon">03</span>検索</h2>
+      <ul class="feature-list">
+        <li>全メモを対象とした検索</li>
+        <li>エディタ内のテキスト検索</li>
+        <li>選択テキストを Google 検索</li>
+      </ul>
+    </section>
+
+    <!-- クラウド連携 -->
+    <section class="feature-section">
+      <h2><span class="section-icon">04</span>クラウド連携</h2>
+      <ul class="feature-list">
+        <li>iCloud Drive への保存・読み込み <span class="note">（macOS / iOS）</span></li>
+        <li>Google Drive への保存・読み込み <span class="note">（macOS / iOS / Android / Windows）</span></li>
+        <li>OneDrive への保存・読み込み <span class="note">（macOS / iOS / Android / Windows）</span></li>
+      </ul>
+    </section>
+
+    <!-- インポート／エクスポート -->
+    <section class="feature-section">
+      <h2><span class="section-icon">05</span>インポート／エクスポート</h2>
+      <ul class="feature-list">
+        <li>Windows 版 旧Memon の XML メモファイルをインポート</li>
+        <li>指定フォルダのテキストファイルを一括インポート</li>
+        <li>選択メモをテキスト / PDF / リッチテキスト（RTF）ファイルとしてエクスポート</li>
+        <li>グループをフォルダ階層でテキスト / PDF / リッチテキスト（RTF）エクスポート</li>
+      </ul>
+    </section>
+
+    <!-- その他 -->
+    <section class="feature-section">
+      <h2><span class="section-icon">06</span>その他</h2>
+      <ul class="feature-list">
+        <li>AES 暗号化によるパスワード保護</li>
+        <li>印刷 <span class="note">（エディタツールバーから起動。プリンタ選択・余白・ヘッダー/フッター・プレビュー）</span></li>
+        <li>付箋表示 <span class="note">（デスクトップにメモをウィンドウとして表示）</span></li>
+        <li>ホーム画面ウィジェット <span class="note">（iOS のみ）</span></li>
+        <li>フォント・背景色のカスタマイズ</li>
+        <li>アプリの更新確認</li>
+      </ul>
+    </section>
+
+    <!-- ドキュメントリンク -->
+    <div class="links-section">
+      <p>関連ドキュメント</p>
+      <div class="doc-links">
+        <a class="doc-link" href="terms_of_service.html">利用規約</a>
+        <a class="doc-link" href="privacy_policy.html">プライバシーポリシー</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>Copyright &copy; 2026 CONVENISOFT. All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.nav-links > li > a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var li = this.parentElement;
+        if (li.querySelector('.dropdown')) {
+          e.preventDefault();
+          var isOpen = li.classList.contains('open');
+          document.querySelectorAll('.nav-links > li').forEach(function(el) { el.classList.remove('open'); });
+          if (!isOpen) li.classList.add('open');
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-links')) {
+        document.querySelectorAll('.nav-links > li').forEach(function(el) { el.classList.remove('open'); });
+      }
+    });
+  </script>
+</body>
+</html>

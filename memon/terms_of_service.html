@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用規約 — Memon</title>
+  <style>
+    :root {
+      --bg: #FAF6F0;
+      --bg-card: #F2EBE0;
+      --text: #1C1816;
+      --text-muted: #6B5C4E;
+      --accent: #7A5C1E;
+      --divider: #E2D5BC;
+      --link: #7A5C1E;
+      --badge-bg: #EDE4D3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1A1714;
+        --bg-card: #241F1B;
+        --text: #E8E0D4;
+        --text-muted: #9E8E7E;
+        --accent: #C4962A;
+        --divider: #3A3028;
+        --link: #C4962A;
+        --badge-bg: #2E2720;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", -apple-system, system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      padding: 0 20px 80px;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding-top: 48px; }
+
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .app-name {
+      display: inline-block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 13px;
+      font-weight: normal;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: "Hiragino Mincho ProN", "Noto Serif JP", Georgia, serif;
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .meta { font-size: 13px; color: var(--text-muted); }
+
+    section { margin-bottom: 40px; }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .section-num {
+      font-family: Georgia, serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+
+    p { margin-bottom: 12px; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol { padding-left: 1.4em; margin-bottom: 12px; }
+    li { margin-bottom: 6px; color: var(--text); }
+
+    .highlight-box {
+      background: var(--bg-card);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { opacity: 0.75; }
+
+    .contact-box {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px 24px;
+      border: 1px solid var(--divider);
+    }
+
+    .contact-box a { font-weight: 600; }
+
+    .related-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--divider);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) { body { padding: 0 16px 64px; } .container { padding-top: 32px; } }
+
+    /* ── Navigation ── */
+    .site-nav { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--divider); z-index: 100; }
+    .site-nav .inner { max-width: 720px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .nav-brand { font-family: Georgia,"Times New Roman",serif; font-size: 15px; font-weight: normal; letter-spacing: 0.12em; color: var(--accent); text-decoration: none; }
+    .nav-links { list-style: none; display: flex; }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a { display: flex; align-items: center; gap: 4px; padding: 0 14px; height: 52px; font-size: 14px; color: var(--text); text-decoration: none; white-space: nowrap; cursor: pointer; }
+    .nav-links > li > a:hover { color: var(--accent); }
+    .nav-arrow { font-size: 10px; opacity: 0.6; transition: transform .2s; }
+    .nav-links > li.open > a .nav-arrow, .nav-links > li:hover > a .nav-arrow { transform: rotate(180deg); }
+    .dropdown { position: absolute; top: calc(100% + 4px); right: 0; min-width: 140px; background: var(--bg-card); border: 1px solid var(--divider); border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); list-style: none; padding: 6px 0; opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity .15s, transform .15s; }
+    .nav-links > li:hover .dropdown, .nav-links > li:focus-within .dropdown, .nav-links > li.open .dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .dropdown a { display: block; padding: 9px 16px; font-size: 14px; color: var(--text); text-decoration: none; }
+    .dropdown a:hover { background: var(--bg); color: var(--accent); }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="サイトナビゲーション">
+    <div class="inner">
+      <a class="nav-brand" href="../index.html">CONVENISOFT</a>
+      <ul class="nav-links">
+        <li>
+          <a href="#" aria-haspopup="true">アプリケーション <span class="nav-arrow">▾</span></a>
+          <ul class="dropdown" role="menu">
+            <li><a href="index.html" role="menuitem">Memon</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <span class="app-name">Memon</span>
+      <h1>利用規約<br><span style="font-size:0.65em; font-weight:400; letter-spacing:0.02em;">Terms of Service</span></h1>
+      <p class="meta">制定日：2026年7月22日　／　最終更新：2026年7月22日</p>
+    </header>
+
+    <section>
+      <p>本利用規約（以下「本規約」）は、fukasawa.yusuke（以下「開発者」）が提供するメモアプリ「Memon」（iOS・Android・macOS・Windows 版、以下「本アプリ」）の利用条件を定めるものです。本アプリをインストールまたは使用することで、本規約に同意したものとみなします。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">01</span>サービスの利用</h2>
+      <p>本アプリは個人・法人を問わず、メモの作成・管理を目的として利用できます。</p>
+      <p>以下の行為を禁止します。</p>
+      <ul>
+        <li>本アプリを違法な目的で使用すること</li>
+        <li>本アプリのリバースエンジニアリング、逆コンパイル、または改ざんを行うこと</li>
+        <li>本アプリを通じて第三者の権利を侵害すること</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="section-num">02</span>知的財産権</h2>
+      <p>本アプリのソフトウェア、デザイン、ロゴ、その他コンテンツに関する知的財産権は開発者に帰属します。</p>
+      <p>ユーザーが作成したメモデータはユーザー自身に帰属し、開発者はその内容に対する権利を主張しません。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">03</span>アプリ内課金</h2>
+      <p>本アプリは広告を削除するアプリ内課金（広告削除）を提供しています。購入後のキャンセルや返金については、各プラットフォームの規約に従います。</p>
+      <ul>
+        <li>iOS / macOS：<a href="https://support.apple.com/ja-jp/118223" target="_blank">Apple の払い戻しポリシー →</a></li>
+        <li>Android：<a href="https://support.google.com/googleplay/answer/2479637" target="_blank">Google Play の返金ポリシー →</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="section-num">04</span>免責事項</h2>
+      <p>本アプリは現状有姿で提供されます。開発者は以下について一切の責任を負いません。</p>
+      <ul>
+        <li>本アプリの利用または利用不能によって生じた損害</li>
+        <li>ユーザーのデータの消失または破損</li>
+        <li>第三者サービス（Google Drive・iCloud 等）の障害に起因する損害</li>
+      </ul>
+      <div class="highlight-box">
+        重要なデータは定期的にバックアップされることをお勧めします。本アプリはメモファイルのエクスポート機能を提供しています。
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="section-num">05</span>サービスの変更・終了</h2>
+      <p>開発者は事前通知なく本アプリの機能変更、アップデートの停止、またはサービスの終了を行う場合があります。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">06</span>プライバシー</h2>
+      <p>本アプリによるデータの収集・利用については、別途定める<a href="privacy_policy.html">プライバシーポリシー</a>をご確認ください。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">07</span>規約の変更</h2>
+      <p>本規約は必要に応じて更新することがあります。重要な変更がある場合は、アプリのアップデートまたはこのページにてお知らせします。変更後も本アプリを使用し続けた場合、改定後の規約に同意したものとみなします。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">08</span>準拠法・管轄</h2>
+      <p>本規約は日本法に準拠し、本規約に関する紛争については東京地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">09</span>お問い合わせ</h2>
+      <div class="contact-box">
+        <p>本規約に関するご質問は、以下よりお問い合わせください。</p>
+        <p style="margin-top:8px;"><a href="mailto:fukasawa.yusuke@gmail.com">fukasawa.yusuke@gmail.com</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Memon. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('.nav-links > li > a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var li = this.parentElement;
+        if (li.querySelector('.dropdown')) {
+          e.preventDefault();
+          var isOpen = li.classList.contains('open');
+          document.querySelectorAll('.nav-links > li').forEach(function(el) { el.classList.remove('open'); });
+          if (!isOpen) li.classList.add('open');
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-links'))
+        document.querySelectorAll('.nav-links > li').forEach(function(el) { el.classList.remove('open'); });
+    });
+  </script>
+</body>
+</html>

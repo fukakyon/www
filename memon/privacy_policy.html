@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー — Memon</title>
+  <style>
+    :root {
+      --bg: #FAF6F0;
+      --bg-card: #F2EBE0;
+      --text: #1C1816;
+      --text-muted: #6B5C4E;
+      --accent: #7A5C1E;
+      --divider: #E2D5BC;
+      --link: #7A5C1E;
+      --badge-bg: #EDE4D3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1A1714;
+        --bg-card: #241F1B;
+        --text: #E8E0D4;
+        --text-muted: #9E8E7E;
+        --accent: #C4962A;
+        --divider: #3A3028;
+        --link: #C4962A;
+        --badge-bg: #2E2720;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", -apple-system, system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      padding: 0 20px 80px;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding-top: 48px; }
+
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .app-name {
+      display: inline-block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 13px;
+      font-weight: normal;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: "Hiragino Mincho ProN", "Noto Serif JP", Georgia, serif;
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .meta { font-size: 13px; color: var(--text-muted); }
+
+    .platform-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--badge-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--divider);
+    }
+
+    section { margin-bottom: 40px; }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .section-num {
+      font-family: Georgia, serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+
+    p { margin-bottom: 12px; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol { padding-left: 1.4em; margin-bottom: 12px; }
+    li { margin-bottom: 6px; color: var(--text); }
+
+    .highlight-box {
+      background: var(--bg-card);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .highlight-box strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 0.05em;
+    }
+
+    .highlight-box .platform-note {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--badge-bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      padding: 1px 6px;
+      margin-left: 6px;
+      vertical-align: middle;
+      letter-spacing: 0.04em;
+    }
+
+    .third-party-card {
+      background: var(--bg-card);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 12px 0;
+    }
+
+    .third-party-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .third-party-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+
+    .scope-box {
+      background: var(--bg);
+      border: 1px solid var(--divider);
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 8px 0;
+      font-size: 13px;
+    }
+
+    .scope-label {
+      font-family: monospace;
+      font-size: 12px;
+      background: var(--badge-bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      padding: 1px 6px;
+      color: var(--accent);
+    }
+
+    a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { opacity: 0.75; }
+
+    .contact-box {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px 24px;
+      border: 1px solid var(--divider);
+    }
+
+    .contact-box a { font-weight: 600; }
+
+    .google-note {
+      background: var(--bg-card);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .google-note h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--divider);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) { body { padding: 0 16px 64px; } .container { padding-top: 32px; } }
+
+    /* ── Navigation ── */
+    .site-nav { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--divider); z-index: 100; }
+    .site-nav .inner { max-width: 720px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .nav-brand { font-family: Georgia,"Times New Roman",serif; font-size: 15px; font-weight: normal; letter-spacing: 0.12em; color: var(--accent); text-decoration: none; }
+    .nav-links { list-style: none; display: flex; }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a { display: flex; align-items: center; gap: 4px; padding: 0 14px; height: 52px; font-size: 14px; color: var(--text); text-decoration: none; white-space: nowrap; cursor: pointer; }
+    .nav-links > li > a:hover { color: var(--accent); }
+    .nav-arrow { font-size: 10px; opacity: 0.6; transition: transform .2s; }
+    .nav-links > li.open > a .nav-arrow, .nav-links > li:hover > a .nav-arrow { transform: rotate(180deg); }
+    .dropdown { position: absolute; top: calc(100% + 4px); right: 0; min-width: 140px; background: var(--bg-card); border: 1px solid var(--divider); border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); list-style: none; padding: 6px 0; opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity .15s, transform .15s; }
+    .nav-links > li:hover .dropdown, .nav-links > li:focus-within .dropdown, .nav-links > li.open .dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .dropdown a { display: block; padding: 9px 16px; font-size: 14px; color: var(--text); text-decoration: none; }
+    .dropdown a:hover { background: var(--bg); color: var(--accent); }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="サイトナビゲーション">
+    <div class="inner">
+      <a class="nav-brand" href="../index.html">CONVENISOFT</a>
+      <ul class="nav-links">
+        <li>
+          <a href="#" aria-haspopup="true">アプリケーション <span class="nav-arrow">▾</span></a>
+          <ul class="dropdown" role="menu">
+            <li><a href="index.html" role="menuitem">Memon</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <span class="app-name">Memon</span>
+      <h1>プライバシーポリシー<br><span style="font-size:0.65em; font-weight:400; letter-spacing:0.02em;">Privacy Policy</span></h1>
+      <p class="meta">制定日：2026年7月22日　／　最終更新：2026年7月22日</p>
+      <div class="platform-badges">
+        <span class="badge">iOS</span>
+        <span class="badge">Android</span>
+        <span class="badge">macOS</span>
+        <span class="badge">Windows</span>
+      </div>
+    </header>
+
+    <section>
+      <p>Memon（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、個人情報の適切な取り扱いに努めます。本ポリシーは、本アプリが収集する情報とその利用方法について説明します。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">01</span>収集する情報</h2>
+
+      <div class="highlight-box">
+        <strong>メモデータ</strong>
+        ユーザーが作成・編集するメモの内容はデバイス内にのみ保存されます。開発者はメモの内容にアクセスしません。
+      </div>
+
+      <div class="highlight-box">
+        <strong>Google Drive 同期データ <span class="platform-note">iOS / Android / macOS / Windows</span></strong>
+        ユーザーが Google Drive 同期を有効にした場合、メモファイルをユーザー自身の Google Drive に保存・読み込みします。アクセスは本アプリが作成したファイルのみに限定されます（<span class="scope-label">drive.file</span> スコープ）。開発者はユーザーの Google Drive 上のデータにアクセスしません。
+      </div>
+
+      <div class="highlight-box">
+        <strong>広告に関するデータ（Google AdMob）<span class="platform-note">iOS / Android</span></strong>
+        本アプリは広告配信のために Google AdMob を利用しています。AdMob はパーソナライズ広告の表示にあたり、以下の情報を自動的に収集することがあります。
+        <ul style="margin-top:8px; margin-bottom:0;">
+          <li>広告識別子（IDFA / GAID）</li>
+          <li>デバイス情報（機種、OS バージョン等）</li>
+          <li>アプリの利用状況に関するデータ</li>
+          <li>おおよその位置情報（IP アドレスから推定）</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="section-num">02</span>情報の利用目的</h2>
+      <ul>
+        <li>メモ機能の提供</li>
+        <li>Google Drive へのメモファイルの同期（ユーザーが選択した場合）</li>
+        <li>iCloud へのメモファイルの同期（iOS / macOS でユーザーが選択した場合）</li>
+        <li>広告の表示（iOS / Android：Google AdMob による）</li>
+        <li>アプリの改善および不具合の修正</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="section-num">03</span>Google ユーザーデータの取り扱い</h2>
+
+      <p>本アプリが Google Drive を通じて取得・保存するデータの取り扱いについて説明します。</p>
+
+      <div class="google-note">
+        <h3>アクセス範囲</h3>
+        <p>本アプリは <span class="scope-label">drive.file</span> スコープのみを使用します。このスコープは、本アプリが作成またはユーザーが本アプリで開いたファイルへのアクセスのみを許可するものです。ユーザーの Google Drive 全体へのアクセスは行いません。</p>
+      </div>
+
+      <div class="google-note">
+        <h3>データの利用・共有</h3>
+        <p>取得した Google ユーザーデータは、メモファイルの同期目的にのみ使用します。第三者への販売・共有は一切行いません。また、広告配信・市場調査などの目的でユーザーデータを使用することはありません。</p>
+      </div>
+
+      <div class="google-note">
+        <h3>アクセスの取り消し</h3>
+        <p>ユーザーはいつでも本アプリの Google Drive アクセスを取り消すことができます。設定方法：<a href="https://myaccount.google.com/permissions" target="_blank">Google アカウント → セキュリティ → サードパーティアクセス</a> から「Memon」を削除してください。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="section-num">04</span>第三者サービス</h2>
+      <p>本アプリは以下の第三者サービスを利用しています。各サービスのプライバシーポリシーを併せてご確認ください。</p>
+
+      <div class="third-party-card">
+        <h3>Google Drive <span class="badge">iOS</span><span class="badge">Android</span><span class="badge">macOS</span><span class="badge">Windows</span></h3>
+        <p>メモファイルのクラウド同期に使用します（ユーザーが選択した場合のみ）。アクセスは本アプリが作成したファイルに限定されます。</p>
+        <a href="https://policies.google.com/privacy" target="_blank">Google プライバシーポリシー →</a>
+      </div>
+
+      <div class="third-party-card">
+        <h3>Google AdMob <span class="badge">iOS</span><span class="badge">Android</span></h3>
+        <p>広告配信サービス。デバイス情報・広告識別子等を収集します。</p>
+        <a href="https://policies.google.com/privacy" target="_blank">Google プライバシーポリシー →</a>
+      </div>
+
+      <div class="third-party-card">
+        <h3>Apple iCloud <span class="badge">iOS</span><span class="badge">macOS</span></h3>
+        <p>ユーザーが選択した場合のみ、メモファイルの同期に使用します。</p>
+        <a href="https://www.apple.com/legal/privacy/jp/" target="_blank">Apple プライバシーポリシー →</a>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="section-num">05</span>広告トラッキングの制御</h2>
+      <p>iOS 版・Android 版は広告配信のため Google AdMob を利用しています。</p>
+      <p><strong>iOS：</strong>App Tracking Transparency（ATT）フレームワークに基づき、パーソナライズ広告のためのトラッキングを行う前にユーザーの許可を求めます。<strong>設定 → プライバシーとセキュリティ → トラッキング</strong> からいつでも変更できます。</p>
+      <p><strong>Android：</strong>広告設定は <strong>Google 設定 → 広告</strong> から管理できます。</p>
+      <p>macOS 版・Windows 版は広告を表示しないため、広告識別子やトラッキングデータは収集しません。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">06</span>データの保管と安全性</h2>
+      <p>メモデータはデバイス内またはユーザー自身のクラウドアカウント（Google Drive / iCloud）に保存され、開発者のサーバーには送信されません。</p>
+      <p>本アプリはパスワードによるメモファイルの暗号化機能を提供しています（AES-256）。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">07</span>お子様のプライバシー</h2>
+      <p>本アプリは 13 歳未満のお子様を対象としていません。13 歳未満のお子様から意図的に個人情報を収集することはありません。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">08</span>ポリシーの変更</h2>
+      <p>本ポリシーは必要に応じて更新することがあります。重要な変更がある場合は、アプリのアップデートまたはこのページにてお知らせします。</p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">09</span>関連文書</h2>
+      <p><a href="terms_of_service.html">利用規約 →</a></p>
+    </section>
+
+    <section>
+      <h2><span class="section-num">10</span>お問い合わせ</h2>
+      <div class="contact-box">
+        <p>本ポリシーに関するご質問は、以下よりお問い合わせください。</p>
+        <p style="margin-top:8px;"><a href="mailto:fukasawa.yusuke@gmail.com">fukasawa.yusuke@gmail.com</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Memon. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('.nav-links > li > a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var li = this.parentElement;
+        if (li.querySelector('.dropdown')) {
+          e.preventDefault();
+          var isOpen = li.classList.contains('open');
+          document.querySelectorAll('.nav-links > li').forEach(function(el) { el.classList.remove('open'); });
+          if (!isOpen) li.classList.add('open');
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-links'))
+        document.querySelectorAll('.nav-links > li').forEach(function(el) { el.classList.remove('open'); });
+    });
+  </script>
+</body>
+</html>
